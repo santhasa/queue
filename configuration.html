@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hospital Appointment and Queue Management</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" media="all" href="css/jsDatePick_ltr.min.css" />
+<script type="text/javascript" src="js/jsDatePick.min.1.3.js"></script>
+<script type="text/javascript" src="js/date_on_load.js"></script>
+<script type="text/javascript" src="js/jquery.1.4.2.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.timepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
+
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="iecss.css" />
+<![endif]-->
+</head>
+
+<body>
+<div id="main_container">
+	<div class="header">
+    	<div id="logo"><a href="index.html"><img src="/queue/images/logo.png" alt="" title="" width="162" height="54" border="0" /></a></div>
+    
+    	<div class="right_header">
+        	
+            <div class="top_menu">
+            <a href="#" class="login">Welcome</a>
+
+            </div>
+        
+             <div id="menu">
+                <ul>                                              
+                    <li><a href="/queue/index.html" title="">Home</a></li>
+                    <li><a href="/queue/panel.html" title="">List</a></li>
+                    <li><a href="/queue/book.html"  title="">Book</a></li>
+                    <li><a href="/queue/modify.html" title="">Modify/Cancel</a></li>
+                    <li><a class="current" href="#" title="">Create Slot</a></li>
+                    <li><a href="/queue/dashboard.html" target="_blank" title="">Dashboard</a></li>
+                </ul>
+            </div>
+        
+        </div>
+    
+    </div>
+        <form role="form" id="form" class="register">
+            <h1>Configure Slots</h1>
+            <fieldset class="row1">
+                <legend>Configure
+                </legend>
+                <p>
+                    <label>Hospital Name
+                    </label>
+                    <select name="hospital_code" id="hospital_code">
+                        <option value="0">--Select--
+                        </option>
+                        <option value="HOS001">My Clinic
+                        </option>
+                    </select>
+                </p>
+                <p>
+                    <label>Doctor Name
+                    </label>
+                    <select name="doctor_name" id="doctor_name">
+                        <option value="0">--Select--
+                        </option>
+                        <option value="DOC001">Dr. Srinivas
+                        </option>
+                        <option value="DOC002">Dr. XYZ
+                        </option>
+                    </select>
+                </p>
+                <p>
+	                 <label>Working Days
+    	             </label>
+        	         <table>
+        	         <tr><td style="width:140px"></td><td><input type="checkbox" Name="WorkingDay[]" value="Mon"/>Monday</td></tr>
+            	     <tr><td></td><td><input type="checkbox" Name="WorkingDay[]" value="Tue"/>Tuesday</td></tr>
+			         <tr><td></td><td><input type="checkbox" Name="WorkingDay[]" value="Wed" />Wednesday</td></tr>
+      	          	 <tr><td></td><td><input type="checkbox" Name="WorkingDay[]" value="Thu" />Thursday</td></tr>
+      	          	 <tr><td></td><td><input type="checkbox" Name="WorkingDay[]" value="Fri" /> Friday</td></tr>
+      	             <tr><td></td><td><input type="checkbox" Name="WorkingDay[]" value="Sat" />Saturday</td></tr>
+      	             <tr><td></td><td><input type="checkbox" Name="WorkingDay[]" value="Sun" /> Sunday</td></tr>
+      	             </table>
+                </p>
+                <p>
+                     <label>Start Date
+    	             </label>
+    	             <input type="text" size="12" id="slot_start_date" name="slot_start_date"/>
+				</p>
+				<p>
+					<label>End Date
+    	             </label>
+    	             <input type="text" size="12" id="slot_end_date" name="slot_end_date"/>
+    	        </p>
+    	        <p>
+                     <label>Start Time 
+    	             </label>
+    	             <input id="slot_start_time" name="slot_start_time" type="text" class="time" />
+				</p>
+				<p>
+					<label>End Time
+    	             </label>
+    	             <input type="select" size="12" id="slot_end_time" name="slot_end_time" class="time"/>
+    	        </p>
+    	        <p>
+    	        	<label>% of Walk-ins out of overall number of patients</label>
+					<select class="date" name="appt_percentage" id="appt_percentage">
+						<option value="10">10%
+	                    </option>	
+						<option value="20">20%
+                        </option>
+						<option value="25">25%
+                        </option>
+						<option value="40">40%
+                        </option>
+                        <option value="50">50%
+                        </option>
+                        <option value="60">60%
+                        </option>
+                        <option value="75">75%
+                        </option>
+	                    <option value="80">80%
+                        </option>
+	                    <option value="90">90%
+                        </option>
+                        <option value="100">100%
+                        </option>
+
+
+
+					</select>
+
+    	        </p>
+    	        <p>     
+	    	        <label>Avg. time per patient
+    	             </label>
+					<select class="date" name="avg_time" id="avg_time">
+						<option value="5">5 mins
+	                    </option>	
+						<option value="10">10 mins
+                        </option>
+						<option value="15">15 mins
+                        </option>
+						<option value="20">20 mins
+                        </option>
+                        <option value="30">30 mins
+                        </option>
+                        <option value="60">60 mins
+                        </option>
+					</select>
+            </fieldset>
+           <table>
+            	<tr>
+            		<td style="width:350px">
+            		</td>
+            		<td>
+				           <div><button class="button">Finish </button></div>
+				    </td>
+				</tr>
+			</table>
+  
+         
+        </form>
+    
+<!--<form  method="post" id="booking">   
+    <div id="main_content">
+
+			<h1><b>Patient Appointment Booking</b></h1><br>
+			<br><br>
+
+    	<table>
+    		<tr>
+    			<td style="width:130px">
+    			</td>
+    			<td style="width:100px">
+    			</td>
+    			<td style="width:130px">
+					<label class="llabel" for="pname">Patient Name</label>    			
+				</td>
+    			<td style="width:200px">
+    				<input class="tb8" type="text" id="patient_name">	
+    			</td>
+    		</tr>
+    		<tr><td></td><td></td></tr>
+    		<tr>
+    			<td style="width:130px">
+    			</td>
+    			<td style="width:100px">
+    			</td>
+    			<td style="width:130px">
+					<label  class="llabel" for="pdoctor">Doctor to Meet</label>    			
+				</td>
+    			<td style="width:200px">
+    				<input class="tb8" type="text" id="appt_for_doctor">	
+    			</td>
+			</tr>
+			<tr><td></td><td></td></tr>
+			<tr>
+    			<td style="width:130px">
+    			</td>
+    			<td style="width:100px">
+    			</td>
+    			<td style="width:130px">
+					<label class="llabel" for="apptmttype">Appointment Type</label>    			
+				</td>
+    			<td style="width:200px">
+    				<input type="text" class="tb8" id="appt_type">	
+    			</td>
+    		</tr>
+    		<tr><td></td><td></td></tr>
+			<tr>
+    			<td style="width:130px">
+    			</td>
+    			<td style="width:100px">
+    			</td>
+    			<td style="width:130px">
+					<label class="llabel" for="apptmtdate">Appointment Date</label>    			
+				</td>
+    			<td style="width:200px">
+    				<input type="text" class="tb8" id="appt_date">	
+    			</td>
+    		</tr>
+    		<tr><td></td><td></td></tr>
+			<tr>
+    			<td style="width:130px">
+    			</td>
+    			<td style="width:100px">
+    			</td>
+    			<td style="width:130px">
+					<label class="llabel" for="apptslot">Appointment Time</label>    			
+				</td>
+    			<td style="width:200px">
+    				<input type="text" class="tb8" id="appt_time">	
+    			</td>
+    		</tr>
+			<tr><td></td><td></td></tr>
+    	</table>
+	<br><br>
+     <input type="submit" id="submit" name="Book Appointment">
+<br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            
+     </div>       
+
+</form>-->
+     <div id="footer">
+     	<div class="copyright">
+        <img src="/queue/images/footer_logo.gif" alt="" title="" />
+        </div>
+        <div class="center_footer">&copy; Medical Clinic 2014. All Rights Reserved</div>
+    	<div class="footer_links">
+        <a href="http://www.tickingminds.com">Powered by Ticking Minds</a>
+        </div>
+    
+    
+    </div>
+
+
+</div>
+</body>
+</html>

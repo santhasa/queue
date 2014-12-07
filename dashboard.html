@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hospital Appointment Schedule</title>
+<link rel="stylesheet" type="text/css" href="/queue/css/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" media="all" href="css/jsDatePick_ltr.min.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/jquery.timepicker.css" />
+<script type="text/javascript" src="js/jquery.1.4.2.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/jsDatePick.min.1.3.js"></script>
+<script type="text/javascript" src="js/dashboard.js"></script>
+<script type="text/javascript" src="js/jquery.timepicker.min.js"></script>
+<script type="text/javascript" src="js/jquery.timepicker.js"></script>
+
+<script type="text/javascript" src="js/dateFormatLibrary.js"></script>
+<script type="text/javascript">
+tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear(),nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+if(nhour==0){ap=" AM";nhour=12;}
+else if(nhour<12){ap=" AM";}
+else if(nhour==12){ap=" PM";}
+else if(nhour>12){ap=" PM";nhour-=12;}
+
+if(nyear<1000) nyear+=1900;
+if(nmin<=9) nmin="0"+nmin;
+if(nsec<=9) nsec="0"+nsec;
+
+document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+ap+"";
+}
+
+
+</script>
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="iecss.css" />
+<![endif]-->
+</head>
+
+<body>
+<div class='overlay'></div>
+
+
+
+
+	<div class="header">
+    	<div id="logo"><a href="index.html"><img src="images/logo.png" alt="" title="" width="162" height="54" border="0" /></a>
+    	<table><tr><td style="width:500px"><div id="clockbox" class="appttype"></div></td><td><div id="doctorname" class="appttype">Appointment Schedule for Dr. Srinivas</div>
+    	</td></tr></table></div>
+    	
+    </div>
+	<div id="main_content">
+		<br><br><br>		
+		<table style='table-layout : fixed'> <tr>
+		<td id="cell1" class="tab1">
+  			<div id="appttime1"></div>
+  			<br>
+  			<div id="patientname1"></div> 
+  			<div id="appttype1" class="appttype"></div> 
+  			<div id="status1" class="appttype"></div> 
+	  	</td>
+  		<td id="cell2" class="tab2">
+			<div id="appttime2"></div>
+  			<br>
+  			<div id="patientname2"></div> 
+  			<div id="appttype2" class="appttype"></div> 
+  			<div id="status2" class="appttype"></div> 
+  		</td>
+	  	<td id="cell3" class="tab2">
+			<div id="appttime3"></div>
+  			<br>
+  			<div id="patientname3"></div> 
+  			<div id="appttype3" class="appttype"></div> 
+  			<div id="status3" class="appttype"></div>
+	  	</td>
+	  	<td id="cell4" class="tab2">
+			<div id="appttime4"></div>
+  			<br>
+  			<div id="patientname4"></div> 
+  			<div id="appttype4" class="appttype"></div> 
+  			<div id="status4" class="appttype"></div>
+
+	  	</td>
+	  	</tr><tr>
+		<td id="cell5" class="tab2">
+			<div id="appttime5"></div>
+  			<br>
+  			<div id="patientname5"></div> 
+  			<div id="appttype5" class="appttype"></div> 
+  			<div id="status5" class="appttype"></div>
+
+	  	</td>
+  		<td id="cell6" class="tab2">
+			<div id="appttime6"></div>
+  			<br>
+  			<div id="patientname6"></div> 
+  			<div id="appttype6" class="appttype"></div> 
+  			<div id="status6" class="appttype"></div>
+
+  		</td>
+	  	<td id="cell7" class="tab2">
+			<div id="appttime7"></div>
+  			<br>
+  			<div id="patientname7"></div> 
+  			<div id="appttype7" class="appttype"></div> 
+  			<div id="status7" class="appttype"></div>
+	  	</td>
+	  	<td id="cell8" class="tab2">
+			<div id="appttime8"></div>
+  			<br>
+  			<div id="patientname8"></div> 
+  			<div id="appttype8" class="appttype"></div> 
+  			<div id="status8" class="appttype"></div>
+	  	</td>
+	  	</tr><tr>
+		<td id="cell9" class="tab2">
+			<div id="appttime9"></div>
+  			<br>
+  			<div id="patientname9"></div> 
+  			<div id="appttype9" class="appttype"></div> 
+  			<div id="status9" class="appttype"></div>
+
+	  	</td>
+  		<td id="cell10" class="tab2">
+			<div id="appttime10"></div>
+  			<br>
+  			<div id="patientname10"></div> 
+  			<div id="appttype10" class="appttype"></div> 
+  			<div id="status10" class="appttype"></div>
+
+  		</td>
+	  	<td id="cell11" class="tab2">
+			<div id="appttime11"></div>
+  			<br>
+  			<div id="patientname11"></div> 
+  			<div id="appttype11" class="appttype"></div> 
+  			<div id="status11" class="appttype"></div>
+
+	  	</td>
+	  	<td id="cell12" class="tab2">
+			<div id="appttime12"></div>
+  			<br>
+  			<div id="patientname12"></div> 
+  			<div id="appttype12"class="appttype"></div> 
+  			<div id="status12" class="appttype"></div>
+	  	</td>
+	  	</tr></table>
+	  	<br>
+	  	<p><b style="font-size:26px;text-align:center">PLEASE REPORT TO THE RECEPTION AS SOON AS YOU COME IN!</b></p>
+	  	</div>
+
+</body>
+</html>
